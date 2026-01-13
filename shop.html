@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection | TOPLA Marine Japan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-greige': '#dcdbd7',
+                        'brand-terra': '#c69179',
+                        'brand-green': '#042a2b',
+                        'brand-teal': '#378f9d',
+                    },
+                    fontFamily: {
+                        'serif-jp': ['"Noto Serif JP"', 'serif'],
+                        'display': ['"Cormorant Garamond"', 'serif'],
+                        'sans-jp': ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #151514; font-family: 'Noto Sans JP', sans-serif; }
+        /* スクロールバーのカスタマイズ */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #dcdbd7; }
+        ::-webkit-scrollbar-thumb { background: #042a2b; border-radius: 4px; }
+
+        /* ハンバーガーメニューのアニメーション */
+        .hamburger-line { transition: all 0.3s ease-in-out; }
+        .nav-open .line-1 { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-open .line-2 { opacity: 0; }
+        .nav-open .line-3 { transform: rotate(-45deg) translate(5px, -5px); }
+    </style>
+</head>
+<body class="bg-brand-greige antialiased transition-colors duration-300">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-greige/80 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-display text-3xl font-bold tracking-tighter text-brand-green z-50 relative">TOPLA</a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-brand-green">
+                <a href="index.html" class="hover:text-brand-teal transition">Home</a>
+                <a href="shop.html" class="text-brand-teal">Collection</a>
+                <a href="index.html#about" class="hover:text-brand-teal transition">About</a>
+                <a href="index.html#contact" class="hover:text-brand-teal transition">Contact</a>
+                <span class="relative cursor-pointer hover:text-brand-teal transition">Cart (0)</span>
+            </div>
+
+            <button id="menu-btn" class="md:hidden z-50 focus:outline-none space-y-1.5">
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-1"></div>
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-2"></div>
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-3"></div>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-greige z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="flex flex-col gap-8 text-center font-display text-4xl text-brand-green">
+                <a href="index.html" class="hover:text-brand-terra transition">Home</a>
+                <a href="shop.html" class="text-brand-terra font-bold">Collection</a>
+                <a href="index.html#about" class="hover:text-brand-terra transition">About Us</a>
+                <a href="index.html#contact" class="hover:text-brand-terra transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-4 md:px-8 max-w-[1600px] mx-auto">
+        
+        <div class="text-center mb-12 md:mb-20 fade-in">
+            <h1 class="font-display text-6xl md:text-8xl text-brand-green mb-4">Collection</h1>
+            <p class="font-serif-jp text-brand-terra text-lg">海の宝石たちとの出会い</p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-12 relative">
+            
+            <div class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-30 w-11/12 max-w-sm">
+                <button onclick="toggleFilters()" class="w-full bg-brand-green text-white py-4 rounded-full shadow-2xl font-bold uppercase tracking-widest text-xs flex justify-center items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    Filter & Sort
+                </button>
+            </div>
+
+            <aside id="filterSidebar" class="lg:w-1/4 lg:block fixed inset-0 z-50 bg-brand-greige lg:static lg:bg-transparent lg:z-auto hidden transition-all duration-300">
+                <div class="lg:hidden p-6 flex justify-end">
+                    <button onclick="toggleFilters()" class="text-brand-green">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+
+                <div class="p-6 lg:p-0 h-full overflow-y-auto lg:h-auto lg:sticky lg:top-28 space-y-10">
+                    <h3 class="font-display text-3xl mb-6 hidden lg:block text-brand-green">Filter</h3>
+
+                    <div class="space-y-4 border-b border-brand-green/10 pb-8">
+                        <h4 class="font-serif-jp font-bold text-sm">カテゴリー</h4>
+                        <ul class="space-y-3 text-sm font-light opacity-80">
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green"> 海水魚 (Marine Fish)</label></li>
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green"> サンゴ (Corals)</label></li>
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green"> イソギンチャク (Anemones)</label></li>
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green"> 機材・用品 (Equipment)</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4 border-b border-brand-green/10 pb-8">
+                        <h4 class="font-serif-jp font-bold text-sm">価格帯</h4>
+                        <input type="range" class="w-full accent-brand-green h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex justify-between text-xs opacity-60 font-mono">
+                            <span>¥0</span>
+                            <span>¥500,000+</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pb-8">
+                        <h4 class="font-serif-jp font-bold text-sm">在庫状況</h4>
+                        <ul class="space-y-3 text-sm font-light opacity-80">
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green" checked> 在庫ありのみ</label></li>
+                            <li><label class="flex items-center gap-3 cursor-pointer hover:opacity-100"><input type="checkbox" class="accent-brand-green"> セール対象</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:hidden mt-8">
+                        <button onclick="toggleFilters()" class="w-full bg-brand-green text-white py-4 rounded-xl font-bold">適用する (Apply)</button>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="lg:w-3/4">
+                <div class="hidden lg:flex justify-end mb-8 text-sm gap-4 opacity-60">
+                    <span>Sort by:</span>
+                    <select class="bg-transparent border-none font-bold cursor-pointer focus:ring-0">
+                        <option>新着順 (Newest)</option>
+                        <option>価格が低い順 (Low - High)</option>
+                        <option>価格が高い順 (High - Low)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+                    
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-4">
+                            <img src="https://images.unsplash.com/photo-1599488615731-7e580a612508?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Clownfish">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span class="bg-white/90 text-brand-green px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick View</span>
+                            </div>
+                            <span class="absolute top-4 left-4 bg-brand-terra text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">New</span>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold leading-none mb-1">Platinum Clownfish</h3>
+                        <p class="text-xs text-gray-500 mb-2 italic">Amphiprion percula</p>
+                        <p class="font-mono text-sm">¥12,800</p>
+                    </div>
+
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-4">
+                            <img src="https://images.unsplash.com/photo-1544551763-47a184117db7?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Coral Trout">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span class="bg-white/90 text-brand-green px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick View</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold leading-none mb-1">Blue-Spotted Grouper</h3>
+                        <p class="text-xs text-gray-500 mb-2 italic">Plectropomus leopardus</p>
+                        <p class="font-mono text-sm">¥45,000</p>
+                    </div>
+
+                    <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-4">
+                            <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Coral">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span class="bg-white/90 text-brand-green px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick View</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold leading-none mb-1">Aussie Scolymia</h3>
+                        <p class="text-xs text-gray-500 mb-2 italic">Scolymia australis</p>
+                        <p class="font-mono text-sm">¥68,000</p>
+                    </div>
+
+                    <div class="group cursor-pointer opacity-70">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-4 grayscale">
+                            <img src="https://images.unsplash.com/photo-1518117769584-93438a9d1d37?auto=format&fit=crop&w=800" class="w-full h-full object-cover" alt="Equipment">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <span class="text-white border border-white px-4 py-2 text-xs font-bold uppercase tracking-widest">Sold Out</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold leading-none mb-1">Protein Skimmer Pro</h3>
+                        <p class="text-xs text-gray-500 mb-2 italic">Equipment</p>
+                        <p class="font-mono text-sm">¥89,000</p>
+                    </div>
+
+                     <div class="group cursor-pointer">
+                        <div class="relative overflow-hidden rounded-2xl aspect-[4/5] mb-4">
+                            <img src="https://images.unsplash.com/photo-1622358823439-d34346743b00?auto=format&fit=crop&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Angelfish">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span class="bg-white/90 text-brand-green px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Quick View</span>
+                            </div>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold leading-none mb-1">Emperor Angelfish</h3>
+                        <p class="text-xs text-gray-500 mb-2 italic">Pomacanthus imperator</p>
+                        <p class="font-mono text-sm">¥22,500</p>
+                    </div>
+
+                </div>
+                
+                <div class="mt-20 flex justify-center gap-4 font-mono text-sm">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-brand-green text-white">1</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-brand-green/20 hover:bg-white transition">2</button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full border border-brand-green/20 hover:bg-white transition">→</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white/30 py-8 px-6 text-center text-[10px] tracking-widest uppercase">
+        <p>&copy; 2026 TOPLA Marine Japan</p>
+    </footer>
+
+    <script>
+        // フィルター表示切り替え（モバイル用）
+        function toggleFilters() {
+            const sidebar = document.getElementById('filterSidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                sidebar.classList.add('hidden');
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // ハンバーガーメニュー制御
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            const isHidden = menu.classList.contains('opacity-0');
+            if (isHidden) {
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                btn.classList.add('nav-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('opacity-0', 'pointer-events-none');
+                btn.classList.remove('nav-open');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

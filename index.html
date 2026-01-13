@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPLA Marine Japan | 海の宝石をあなたの水槽へ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-greige': '#dcdbd7',
+                        'brand-terra': '#c69179',
+                        'brand-green': '#042a2b',
+                        'brand-teal': '#378f9d',
+                    },
+                    fontFamily: {
+                        'serif-jp': ['"Noto Serif JP"', 'serif'],
+                        'display': ['"Cormorant Garamond"', 'serif'],
+                        'sans-jp': ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { color: #151514; font-family: 'Noto Sans JP', sans-serif; scroll-behavior: smooth; }
+        .font-serif-jp { font-family: 'Noto Serif JP', serif; }
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+        section { min-height: 100vh; display: flex; align-items: center; padding: 4rem 2rem; position: relative; }
+        .content-container { max-width: 1200px; margin: auto; width: 100%; }
+        
+        /* ハンバーガーメニューのアニメーション */
+        .hamburger-line { transition: all 0.3s ease-in-out; }
+        .nav-open .line-1 { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-open .line-2 { opacity: 0; }
+        .nav-open .line-3 { transform: rotate(-45deg) translate(5px, -5px); }
+    </style>
+</head>
+<body class="antialiased bg-brand-greige">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-greige/80 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-display text-3xl font-bold tracking-tighter text-brand-green z-50 relative">TOPLA</a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-brand-green">
+                <a href="index.html" class="hover:text-brand-teal transition">Home</a>
+                <a href="shop.html" class="hover:text-brand-teal transition">Collection</a>
+                <a href="#about" class="hover:text-brand-teal transition">About</a>
+                <a href="#contact" class="hover:text-brand-teal transition">Contact</a>
+                <a href="shop.html" class="bg-brand-green text-white px-6 py-2 rounded-full hover:bg-brand-teal transition">Shop Now</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden z-50 focus:outline-none space-y-1.5">
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-1"></div>
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-2"></div>
+                <div class="w-8 h-0.5 bg-brand-green hamburger-line line-3"></div>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-greige z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="flex flex-col gap-8 text-center font-display text-4xl text-brand-green">
+                <a href="index.html" class="hover:text-brand-terra transition" onclick="toggleMenu()">Home</a>
+                <a href="shop.html" class="hover:text-brand-terra transition" onclick="toggleMenu()">Collection</a>
+                <a href="#about" class="hover:text-brand-terra transition" onclick="toggleMenu()">About Us</a>
+                <a href="#contact" class="hover:text-brand-terra transition" onclick="toggleMenu()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="bg-brand-teal p-0 overflow-hidden text-white pt-20 md:pt-0">
+        <div class="flex flex-col md:flex-row h-full w-full">
+            <div class="md:w-1/2 h-64 md:h-screen order-2 md:order-1 relative">
+                <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200" alt="Marine Life" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-teal/20"></div>
+            </div>
+            <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-brand-teal order-1 md:order-2">
+                <p class="font-display text-sm tracking-[0.3em] mb-4 uppercase text-white/80">TOPLA Marine Japan</p>
+                <h1 class="font-display text-7xl md:text-9xl mb-6 font-bold tracking-tighter">TOPLA</h1>
+                <p class="font-serif-jp text-lg md:text-xl mb-8 leading-relaxed">
+                    จากปลาสองตัว มรดกแห่งความไว้วางใจเริ่มต้นขึ้น<br>
+                    <span class="text-sm opacity-80 mt-2 block font-light text-brand-greige">二匹の魚から、信頼の物語が始まる。</span>
+                </p>
+                <a href="shop.html" class="inline-block w-fit bg-brand-greige text-[#151514] px-12 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                    SHOP NOW
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="updates" class="bg-brand-terra">
+        <div class="content-container flex flex-col lg:flex-row gap-16 items-center">
+            
+            <div class="lg:w-1/2 space-y-6">
+                <div class="space-y-1">
+                    <h2 class="font-display text-5xl md:text-6xl font-bold text-brand-green">Latest Update</h2>
+                    <p class="font-serif-jp text-xl opacity-80">アプデート最新情報</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <h3 class="font-serif-jp text-xl font-bold border-l-4 border-brand-green pl-4">Our Commitment</h3>
+                    <p class="text-sm leading-relaxed font-light">
+                        We are dedicated to promoting sustainable aquatic life through education and quality products.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                    <a href="#blog" class="group bg-white/20 hover:bg-white/40 border border-white/30 p-4 rounded-2xl flex items-center transition-all duration-300 shadow-sm">
+                        <div class="bg-white/20 p-3 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#151514]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2zM15 4v4h4" /></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Official Blog</p>
+                            <p class="text-sm font-bold">最新情報ブログ</p>
+                        </div>
+                    </a>
+
+                    <a href="#line" class="group bg-[#06C755]/20 hover:bg-[#06C755]/40 border border-white/30 p-4 rounded-2xl flex items-center transition-all duration-300 shadow-sm">
+                        <div class="bg-white/20 p-3 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#151514]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.51 2 9.83c0 2.41 1.38 4.54 3.51 5.92-.15.54-.54 1.96-.62 2.25-.1.35.19.35.4.21.16-.11 2.54-1.73 3.58-2.43.37.05.74.08 1.13.08 5.52 0 10-3.51 10-7.83S17.52 2 12 2z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">LINE Community</p>
+                            <p class="text-sm font-bold">LINE公式アカウント</p>
+                        </div>
+                    </a>
+
+                    <a href="#facebook" class="group bg-[#1877F2]/20 hover:bg-[#1877F2]/40 border border-white/30 p-4 rounded-2xl flex items-center transition-all duration-300 shadow-sm sm:col-span-2">
+                        <div class="bg-white/20 p-3 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#151514]" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Facebook Group</p>
+                            <p class="text-sm font-bold">コミュニティグループに参加する</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <div class="rounded-[3rem] overflow-hidden aspect-[4/5] shadow-2xl relative group">
+                    <img src="https://images.unsplash.com/photo-1544551763-47a184117db7?auto=format&fit=crop&w=800" alt="Aquarium" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#151514]/40 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="contact" class="bg-brand-green text-white p-0">
+        <div class="flex flex-col lg:flex-row min-h-screen">
+            
+            <div class="lg:w-1/2 relative flex flex-col">
+                <div class="h-1/2 lg:h-3/5 w-full relative z-0">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7479754683745!2d139.7428580762319!3d35.65858047259461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bbd9009ec09%3A0x481a93f0d2a409dd!2z5p2x5Lqs44K_44Ov44O8!5e0!3m2!1sja!2sjp!4v1709620000000!5m2!1sja!2sjp" 
+                        width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(90%) contrast(120%);" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <div class="absolute top-6 left-6 bg-brand-green/90 backdrop-blur-md px-6 py-4 rounded-xl shadow-lg border border-white/10">
+                        <p class="font-display text-2xl font-bold">TOPLA Store</p>
+                        <p class="text-[10px] tracking-widest uppercase opacity-70">Tokyo, Japan</p>
+                    </div>
+                </div>
+
+                <div class="h-1/2 lg:h-2/5 bg-[#053233] p-12 flex flex-col justify-center space-y-8">
+                    <div>
+                        <h3 class="font-serif-jp text-lg font-bold mb-4 border-l-2 border-brand-terra pl-4">Store Location & Hours</h3>
+                        <div class="space-y-2 text-sm font-light opacity-80 leading-relaxed">
+                            <p>〒106-0000 東京都港区マリンストリート 1-2-3</p>
+                            <p>Tel: 03-1234-5678</p>
+                            <p class="pt-2"><span class="font-bold text-white">Open:</span> Mon-Sat 11:00 - 20:00</p>
+                            <p><span class="font-bold text-white">Close:</span> Sunday & Holidays</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <p class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Follow Us</p>
+                        <div class="flex gap-4">
+                            <a href="#line" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#06C755] hover:border-[#06C755] hover:text-white transition-all duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.51 2 9.83c0 2.41 1.38 4.54 3.51 5.92-.15.54-.54 1.96-.62 2.25-.1.35.19.35.4.21.16-.11 2.54-1.73 3.58-2.43.37.05.74.08 1.13.08 5.52 0 10-3.51 10-7.83S17.52 2 12 2z"/></svg>
+                            </a>
+                            <a href="#facebook" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all duration-300">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            </a>
+                            <a href="#instagram" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#E1306C] hover:border-[#E1306C] hover:text-white transition-all duration-300">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.5 6.5h.01" /><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="1.5" /></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 p-12 md:p-24 flex flex-col justify-center bg-brand-green">
+                <div class="max-w-md w-full mx-auto space-y-8">
+                    <div class="space-y-2">
+                        <p class="font-display text-sm tracking-[0.2em] opacity-60 uppercase">Contact</p>
+                        <h2 class="font-display text-5xl font-bold">Get in Touch</h2>
+                        <p class="text-sm opacity-60 font-light">お問い合わせは下記フォームよりお願いいたします。</p>
+                    </div>
+
+                    <form action="#" method="POST" class="space-y-6 pt-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-widest opacity-50">Name</label>
+                            <input type="text" class="w-full bg-transparent border-b border-white/20 py-3 text-white placeholder-white/20 focus:outline-none focus:border-brand-terra transition-colors" placeholder="山田 太郎">
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-widest opacity-50">Email</label>
+                            <input type="email" class="w-full bg-transparent border-b border-white/20 py-3 text-white placeholder-white/20 focus:outline-none focus:border-brand-terra transition-colors" placeholder="hello@topla.jp">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold uppercase tracking-widest opacity-50">Message</label>
+                            <textarea rows="3" class="w-full bg-transparent border-b border-white/20 py-3 text-white placeholder-white/20 focus:outline-none focus:border-brand-terra transition-colors resize-none" placeholder="お問い合わせ内容"></textarea>
+                        </div>
+
+                        <button type="submit" class="group flex items-center gap-4 text-sm font-bold tracking-widest uppercase pt-8 hover:text-brand-terra transition-colors">
+                            Send Message
+                            <span class="w-8 h-[1px] bg-white group-hover:bg-brand-terra transition-colors"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white/30 py-8 px-6 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest uppercase">
+        <div class="flex gap-4 mb-4 md:mb-0">
+            <a href="#" class="hover:text-white">Terms & Support</a>
+            <a href="#" class="hover:text-white">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 TOPLA Marine Japan</p>
+    </footer>
+
+    <script>
+        // ハンバーガーメニュー制御
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        
+        // メニューの開閉処理
+        function toggleMenu() {
+            const isHidden = menu.classList.contains('opacity-0');
+            if (isHidden) {
+                // Open
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                btn.classList.add('nav-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Close
+                menu.classList.add('opacity-0', 'pointer-events-none');
+                btn.classList.remove('nav-open');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+    </script>
+
+</body>
+</html>
